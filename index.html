@@ -67,6 +67,7 @@ kbd{background:#1b232d;border:1px solid #2b3a4a;border-bottom-width:2px;border-r
     <li><a href="#s9">Las primeras tareas</a></li>
     <li><a href="#s10">Costos y control</a></li>
     <li><a href="#s11">Problemas típicos</a></li>
+    <li><a href="#s12">Opción A: bot propio en el PC del trabajo</a></li>
   </ol>
 </div>
 
@@ -225,6 +226,43 @@ hermes kanban ls</code></pre></div>
   <tr><td>Un bot no toma la tarjeta</td><td>Mira que el despachador esté corriendo (<code>hermes kanban daemon</code>) y que el <code>assignee</code> exista en <code>hermes profile list</code>.</td></tr>
 </table>
 
+<h2 id="s12"><span class="n">12</span>Opción A: bot propio en el PC del trabajo</h2>
+<p>En lugar de que un computador controle al otro, el PC del trabajo corre su propio agente y tú lo manejas por Telegram desde cualquier lado. Ese bot ve los archivos y la red de la empresa; el de la casa sigue con la tienda.</p>
+<div class="note">Son dos agentes independientes: no comparten memoria, skills ni historial. Cada uno vive en su máquina y se configura aparte.</div>
+
+<h3>Paso 1 · Crear el bot en Telegram</h3>
+<ol>
+  <li>Abre Telegram y busca <b>@BotFather</b></li>
+  <li>Escribe <code>/newbot</code>, ponle nombre y usuario (por ejemplo <i>MalluTrabajoBot</i>)</li>
+  <li>Te devuelve un token del tipo <code>123456:ABC-DEF...</code>. Guárdalo: es la llave del bot</li>
+  <li>Busca <b>@userinfobot</b>, mándale cualquier mensaje y anota tu ID numérico</li>
+</ol>
+
+<h3>Paso 2 · Conectar el bot en el PC del trabajo</h3>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell · en el PC del trabajo</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes gateway setup</code></pre></div>
+<p>Elige <b>Telegram</b>, pega el token y, cuando pregunte por usuarios autorizados, <b>escribe tu ID numérico</b>.</p>
+<div class="warn"><b>El error más común:</b> si en esa pregunta eliges <i>Skip</i>, el bot se conecta pero <b>rechaza todos los mensajes</b>, incluidos los tuyos. Parece muerto y no lo está. Siempre pon tu ID o elige modo de emparejamiento.</div>
+
+<h3>Paso 3 · Dejarlo corriendo</h3>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell · en el PC del trabajo</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes gateway install
+hermes gateway start
+hermes gateway status</code></pre></div>
+<p>En Windows el servicio puede no instalarse igual que en Linux. Si <code>install</code> no toma, déjalo con <code>hermes gateway run</code> en una ventana abierta, o crea una tarea en el <b>Programador de tareas</b> que ejecute ese comando al iniciar sesión.</p>
+
+<h3>Paso 4 · Probarlo</h3>
+<p>Escribe <code>/sethome</code> al bot para fijar ese chat como canal de avisos. Después pídele algo que solo pueda hacer allá:</p>
+<div class="cmd"><div class="bar"><span class="tag">Mensaje de prueba</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>Revisa la carpeta Descargas y dime los 5 archivos mas pesados</code></pre></div>
+<p>Si responde con datos reales, quedó operativo y con acceso a esa máquina.</p>
+
+<div class="ok"><b>Qué gana y qué no:</b> gana acceso a los archivos y a la red de la empresa, y lo manejas desde el teléfono. No hereda tus skills ni la memoria del bot de la casa: si quieres que sepa de la tienda, hay que dárselo allá.</div>
+
+<div class="note"><b>Si el firewall lo bloquea:</b> el bot necesita salida a <code>api.telegram.org</code>. Si la empresa lo filtra, va a conectar y desconectarse en bucle. Se comprueba desde PowerShell con <code>Test-NetConnection api.telegram.org -Port 443</code>.</div>
+
+<div class="warn"><b>Seguridad:</b> el token es la llave del bot. No lo pegues en chats ni documentos compartidos. Si se filtra, en @BotFather usa <code>/revoke</code> y genera otro.</div>
+
 <div class="card">
 <h3 style="margin-top:0">Checklist final</h3>
 <ul>
@@ -234,6 +272,7 @@ hermes kanban ls</code></pre></div>
   <li>Primera tarjeta de catálogo ejecutada y revisada</li>
   <li>Dashboard abierto en <code>localhost:9119</code></li>
   <li>Modelo barato asignado a revisor y soporte</li>
+  <li>Bot del trabajo creado en @BotFather, con token y tu ID autorizado</li>
 </ul>
 </div>
 
