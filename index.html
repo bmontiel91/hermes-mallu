@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hermes en Windows · Instalación + Plan Mallu</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0c1016;color:#e9eef4;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:28px 18px 70px}
+.kicker{font-size:10.5px;letter-spacing:2.6px;color:#f5b942;font-weight:800}
+h1{font-size:31px;line-height:1.1;margin:10px 0 8px;letter-spacing:-.8px;font-weight:800}
+.lead{color:#9aa8b7;font-size:14.5px;margin:0 0 22px}
+h2{font-size:19px;margin:38px 0 6px;letter-spacing:-.3px;font-weight:800}
+h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:#f5b942;color:#14181e;font-size:13px;margin-right:9px;vertical-align:2px}
+h3{font-size:14px;margin:22px 0 6px;color:#dfe7ef}
+p{font-size:14px;color:#c3ceda;margin:8px 0}
+ul,ol{font-size:14px;color:#c3ceda;padding-left:20px}
+li{margin:5px 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;background:#1b232d;padding:1px 5px;border-radius:4px;color:#ffd479}
+.cmd{position:relative;background:#0f151c;border:1px solid #24303d;border-radius:11px;margin:10px 0;overflow:hidden}
+.cmd .bar{display:flex;justify-content:space-between;align-items:center;padding:7px 10px 7px 13px;background:#141c25;border-bottom:1px solid #24303d}
+.cmd .tag{font-size:10px;letter-spacing:1.4px;color:#7f8ea0;font-weight:800;text-transform:uppercase}
+.cmd button{background:#f5b942;color:#14181e;border:0;border-radius:6px;padding:5px 12px;font-size:11.5px;font-weight:800;cursor:pointer;font-family:inherit}
+.cmd button:active{transform:scale(.97)}
+.cmd pre{margin:0;padding:13px 14px;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.4px;line-height:1.65;color:#d7e2ee}
+.card{background:#121924;border:1px solid #22303f;border-radius:13px;padding:16px 17px;margin:14px 0}
+.note{border-left:3px solid #f5b942;background:#1a1d1f;border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:13.2px;color:#cfd9e4}
+.warn{border-left:3px solid #e0453e;background:#241618;border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:13.2px;color:#f0d4d4}
+.ok{border-left:3px solid #12a150;background:#12201a;border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:13.2px;color:#cfe8db}
+table{width:100%;border-collapse:collapse;font-size:12.8px;margin:12px 0}
+th{text-align:left;color:#8b98a7;font-size:10px;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid #24303d;padding:8px 6px;font-weight:800}
+td{padding:10px 6px;border-bottom:1px solid #1a2430;color:#c8d4e0;vertical-align:top}
+td b{color:#fff}
+.pill{display:inline-block;background:#1b2431;border:1px solid #2b3a4a;border-radius:999px;padding:2px 9px;font-size:10.5px;color:#9fb0c2;margin:2px 4px 2px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}h1{font-size:26px}}
+.mini{background:#121924;border:1px solid #22303f;border-radius:11px;padding:12px 14px}
+.mini b{display:block;font-size:12.5px;color:#fff;margin-bottom:3px}
+.mini span{font-size:12px;color:#93a1b1}
+.toc{background:#121924;border:1px solid #22303f;border-radius:13px;padding:14px 18px;margin:20px 0 6px}
+.toc a{color:#f5b942;text-decoration:none;font-size:13px}
+.toc ol{margin:6px 0 0;padding-left:18px}
+.toc li{margin:3px 0}
+footer{margin-top:46px;border-top:1px solid #22303f;padding-top:16px;font-size:11.5px;color:#64717f}
+kbd{background:#1b232d;border:1px solid #2b3a4a;border-bottom-width:2px;border-radius:4px;padding:1px 6px;font-size:11.5px;font-family:inherit;color:#dfe7ef}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kicker">GUÍA DE INSTALACIÓN · USO INTERNO</p>
+<h1>Hermes en Windows + plan de bots para Mallu</h1>
+<p class="lead">Todo lo necesario para dejarlo funcionando en el PC del trabajo y operar la tienda con perfiles especializados. Cada bloque de código se copia con un clic.</p>
+
+<div class="toc">
+  <a href="#s1"><b>Contenido</b></a>
+  <ol>
+    <li><a href="#s1">Antes de empezar</a></li>
+    <li><a href="#s2">Instalación</a></li>
+    <li><a href="#s3">Configuración del modelo</a></li>
+    <li><a href="#s4">Los bots: qué es un perfil</a></li>
+    <li><a href="#s5">Organigrama propuesto para Mallu</a></li>
+    <li><a href="#s6">Crear todo de una vez</a></li>
+    <li><a href="#s7">El tablero: tarjetas y despacho</a></li>
+    <li><a href="#s8">Carpetas y espacios de trabajo</a></li>
+    <li><a href="#s9">Las primeras tareas</a></li>
+    <li><a href="#s10">Costos y control</a></li>
+    <li><a href="#s11">Problemas típicos</a></li>
+  </ol>
+</div>
+
+<h2 id="s1"><span class="n">1</span>Antes de empezar</h2>
+<p>Hermes corre nativo en Windows. La instalación es <b>por usuario</b>: no pide administrador y deja todo en <code>%LOCALAPPDATA%\hermes</code>.</p>
+<div class="grid">
+  <div class="mini"><b>Necesitas</b><span>Windows 10 u 11 · PowerShell · conexión a internet</span></div>
+  <div class="mini"><b>No necesitas</b><span>WSL · Docker · permisos de admin · Python instalado</span></div>
+</div>
+<div class="note"><b>Si el PC tiene proxy corporativo</b>, defínelo antes de instalar en la misma ventana de PowerShell:<br>
+<code>$env:HTTPS_PROXY="http://tu-proxy:puerto"</code></div>
+
+<h2 id="s2"><span class="n">2</span>Instalación</h2>
+<h3>Paso 1 · Abrir PowerShell</h3>
+<p>Menú Inicio → escribe <kbd>PowerShell</kbd> → clic derecho → <i>Ejecutar como usuario normal</i> (no hace falta admin).</p>
+
+<h3>Paso 2 · Permitir scripts solo en esta ventana</h3>
+<p>Muchos PC de empresa bloquean los scripts. Esto lo habilita únicamente para la sesión actual, sin tocar la configuración del equipo:</p>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code></pre></div>
+
+<h3>Paso 3 · Instalar</h3>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>irm https://hermes-agent.nousresearch.com/install.ps1 | iex</code></pre></div>
+<p>Tarda unos minutos: baja el código, prepara Python y deja el comando <code>hermes</code> disponible.</p>
+
+<h3>Paso 4 · Verificar</h3>
+<p>Cierra esa ventana, abre una nueva y comprueba:</p>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes --version
+hermes doctor</code></pre></div>
+<div class="ok"><b>Bien:</b> si <code>hermes doctor</code> no marca errores rojos, quedó listo. Si algo falla, el mismo comando dice qué falta.</div>
+
+<h2 id="s3"><span class="n">3</span>Configuración del modelo</h2>
+<p>El bot necesita un proveedor de IA. Es lo único que requiere una clave.</p>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes setup</code></pre></div>
+<p>El asistente te guía: eliges proveedor, pegas la API key y quedas con un modelo por defecto. Después puedes cambiarlo cuando quieras con:</p>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes model
+hermes config edit</code></pre></div>
+<div class="note"><b>Regla práctica:</b> el perfil que redacta o investiga usa el modelo bueno. Los perfiles que solo revisan o clasifican pueden usar uno más barato y ahorras bastante.</div>
+
+<h2 id="s4"><span class="n">4</span>Los bots: qué es un perfil</h2>
+<p>Cada bot es un <b>perfil</b>: una instancia independiente con su propio modelo, su memoria, sus skills, sus credenciales y su historial. No se mezclan entre sí.</p>
+<ul>
+  <li><b>Perfil</b> = quién es el bot. Vive en <code>%LOCALAPPDATA%\hermes\profiles\&lt;nombre&gt;\</code></li>
+  <li><b>Rol</b> = la descripción que le das. Es lo que lee el gerente para saber a quién mandarle cada pega.</li>
+  <li><b>Tarjeta</b> = la tarea concreta, con instrucciones, asignada a un perfil.</li>
+</ul>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes profile list
+hermes profile show catalogo</code></pre></div>
+
+<h2 id="s5"><span class="n">5</span>Organigrama propuesto para Mallu</h2>
+<p>Seis perfiles. El gerente no ejecuta: solo reparte. El revisor es el que evita que algo mal escrito llegue a la tienda.</p>
+<table>
+  <tr><th>Perfil</th><th>Rol</th><th>Qué hace</th></tr>
+  <tr><td><b>gerente</b></td><td>Orquestador</td><td>Descompone el pedido en tarjetas, las asigna y controla el avance. No escribe ni publica nada.</td></tr>
+  <tr><td><b>catalogo</b></td><td>Fichas de producto</td><td>Título SEO, descripción en español, categoría, tags y precio sugerido para WooCommerce.</td></tr>
+  <tr><td><b>precios</b></td><td>Competencia</td><td>Vigila precios de otras tiendas chilenas, detecta bajas y propone ajustes de margen.</td></tr>
+  <tr><td><b>contenido</b></td><td>Marketing</td><td>Posts de novedades, anime, Instagram y correo Mailchimp con las plantillas de la tienda.</td></tr>
+  <tr><td><b>soporte</b></td><td>Atención</td><td>Responde consultas de pedidos y envíos (Starken, Chilexpress, BlueExpress) y deriva los casos raros.</td></tr>
+  <tr><td><b>revisor</b></td><td>Control de calidad</td><td>Lee lo que produjeron los otros y devuelve correcciones antes de publicar.</td></tr>
+</table>
+<div class="warn"><b>Límite importante:</b> ningún perfil publica en la tienda sin que el revisor haya pasado. Automatizar la publicación sin control es la forma más rápida de llenar el catálogo de errores.</div>
+
+<h2 id="s6"><span class="n">6</span>Crear todo de una vez</h2>
+<p>Copia este bloque completo en PowerShell. Crea los seis perfiles y les asigna el rol. <code>--clone</code> copia tu configuración y tu modelo a cada uno, así no tienes que configurar la clave seis veces.</p>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell · bloque completo</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes profile create gerente --clone
+hermes profile create catalogo --clone
+hermes profile create precios --clone
+hermes profile create contenido --clone
+hermes profile create soporte --clone
+hermes profile create revisor --clone
+
+hermes profile describe gerente "Orquesta: descompone pedidos en tarjetas, asigna y controla. No ejecuta tareas."
+hermes profile describe catalogo "Fichas de producto WooCommerce: titulo SEO, descripcion en espanol, categoria, tags y precio sugerido."
+hermes profile describe precios "Vigila precios de competencia en tiendas chilenas y propone ajustes de margen."
+hermes profile describe contenido "Posts de novedades, anime, Instagram y correo Mailchimp con las plantillas de Mallu."
+hermes profile describe soporte "Responde consultas de pedidos y envios. Deriva los casos que requieren decision humana."
+hermes profile describe revisor "Control de calidad: corrige antes de publicar. No produce contenido propio."</code></pre></div>
+<div class="note">Las descripciones van sin tildes a propósito: PowerShell antiguo puede estropear los acentos al pegar. El resto del sistema funciona igual.</div>
+<p>Verifica que quedaron:</p>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes profile list</code></pre></div>
+
+<h2 id="s7"><span class="n">7</span>El tablero: tarjetas y despacho</h2>
+<p>El flujo es simple: creas una tarjeta con instrucciones, la asignas a un perfil, y el despachador despierta a ese bot para que la ejecute.</p>
+<h3>Crear una tarjeta</h3>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes kanban create "Fichas de 10 Funkos nuevos" --assignee catalogo --body "Genera titulo, descripcion, categoria y tags para estos 10 productos. Espanol neutro, sin inventar stock ni medidas. Devuelve una tabla."</code></pre></div>
+<h3>Ver el tablero</h3>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes kanban ls
+hermes kanban show &lt;id&gt;
+hermes kanban stats</code></pre></div>
+<h3>Poner a trabajar a los bots</h3>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell · deja esta ventana abierta</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes kanban daemon</code></pre></div>
+<p>Si prefieres una pasada y cerrar:</p>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes kanban dispatch</code></pre></div>
+<h3>Encadenar bots</h3>
+<p>Una tarjeta puede esperar a otra. El revisor no parte hasta que el catálogo termine:</p>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes kanban create "Revisar las 10 fichas" --assignee revisor --parent &lt;id_de_la_tarjeta_anterior&gt; --body "Revisa coherencia, ortografia y que no haya datos inventados. Devuelve lista de correcciones."</code></pre></div>
+<h3>La oficina, en el navegador</h3>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes dashboard</code></pre></div>
+<p>Abre <code>http://localhost:9119</code>. Ahí ves cada bot, en qué tarjeta está trabajando y cuánto lleva gastado.</p>
+
+<h2 id="s8"><span class="n">8</span>Carpetas y espacios de trabajo</h2>
+<p>Dos cosas distintas. El <b>perfil</b> tiene siempre su carpeta propia. La <b>tarea</b> se ejecuta en el espacio que tú elijas al crearla:</p>
+<table>
+  <tr><th>Espacio</th><th>Qué significa</th><th>Cuándo usarlo</th></tr>
+  <tr><td><code>scratch</code></td><td>Carpeta temporal aislada (por defecto)</td><td>Investigación, redacción, análisis</td></tr>
+  <tr><td><code>dir:C:\ruta</code></td><td>Una carpeta real tuya</td><td>Leer exports de productos, planillas, fotos</td></tr>
+  <tr><td><code>worktree</code></td><td>Copia con rama de git</td><td>Tocar código sin romper lo que funciona</td></tr>
+</table>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes kanban create "Ordenar el export de productos" --assignee catalogo --workspace "dir:C:\Mallu\productos" --body "Lee el CSV de esta carpeta y devuelve la tabla normalizada."</code></pre></div>
+
+<h2 id="s9"><span class="n">9</span>Las primeras tareas</h2>
+<p>Para arrancar sin complicarte, en este orden:</p>
+<ol>
+  <li><b>catalogo</b> · "Fichas de 10 productos" — mide calidad y tiempo antes de escalar a 100.</li>
+  <li><b>revisor</b> · "Revisar esas fichas" — encadenada a la anterior.</li>
+  <li><b>precios</b> · "Comparar precios de estos 20 productos en 3 tiendas chilenas".</li>
+  <li><b>contenido</b> · "Post de novedades de la semana" con las plantillas que ya usas.</li>
+  <li><b>soporte</b> · "Clasificar los correos de la última semana" — solo clasificar, no responder todavía.</li>
+</ol>
+<div class="ok"><b>Regla de oro:</b> la primera tarjeta de cualquier bot nuevo es <i>mapear y documentar</i>, no producir. Así queda una skill escrita y la segunda vez trabaja diez veces mejor.</div>
+
+<h2 id="s10"><span class="n">10</span>Costos y control</h2>
+<div class="cmd"><div class="bar"><span class="tag">PowerShell</span><button onclick="cp(this)">Copiar</button></div>
+<pre><code>hermes insights --days 7
+hermes kanban stats
+hermes kanban ls</code></pre></div>
+<ul>
+  <li><b>Modelo por bot:</b> los perfiles de revisión pueden usar un modelo barato. Se cambia con <code>hermes -p revisor model</code>.</li>
+  <li><b>Freno de mano:</b> si un bot se queda pegado, <code>hermes kanban reclaim &lt;id&gt;</code> corta el worker al instante.</li>
+  <li><b>Reasignar:</b> <code>hermes kanban reassign &lt;id&gt; otro-perfil --reclaim</code> si el rol no era el correcto.</li>
+  <li><b>Límite de tiempo:</b> al crear la tarjeta puedes fijar <code>--max-runtime</code> para que no se eternice.</li>
+</ul>
+
+<h2 id="s11"><span class="n">11</span>Problemas típicos</h2>
+<table>
+  <tr><th>Síntoma</th><th>Causa y solución</th></tr>
+  <tr><td>“no se puede cargar el archivo … por la directiva de ejecución”</td><td>Vuelve a correr <code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code> en esa ventana y repite.</td></tr>
+  <tr><td>El instalador no conecta</td><td>Proxy corporativo. Define <code>$env:HTTPS_PROXY</code> antes de instalar y revisa que el firewall permita salir a la API del proveedor.</td></tr>
+  <tr><td>Error 400 “No models provided”</td><td>El <code>config.yaml</code> quedó guardado con BOM. Guárdalo como UTF-8 sin BOM.</td></tr>
+  <tr><td><code>hermes</code> no se reconoce como comando</td><td>Cierra y abre PowerShell de nuevo para que tome el PATH.</td></tr>
+  <tr><td>El dashboard no abre</td><td>Verifica que el proceso siga vivo y entra a <code>http://localhost:9119</code> exacto (no https).</td></tr>
+  <tr><td>Un bot no toma la tarjeta</td><td>Mira que el despachador esté corriendo (<code>hermes kanban daemon</code>) y que el <code>assignee</code> exista en <code>hermes profile list</code>.</td></tr>
+</table>
+
+<div class="card">
+<h3 style="margin-top:0">Checklist final</h3>
+<ul>
+  <li>Instalado y <code>hermes doctor</code> sin errores</li>
+  <li>Modelo configurado con <code>hermes setup</code></li>
+  <li>Seis perfiles creados y descritos</li>
+  <li>Primera tarjeta de catálogo ejecutada y revisada</li>
+  <li>Dashboard abierto en <code>localhost:9119</code></li>
+  <li>Modelo barato asignado a revisor y soporte</li>
+</ul>
+</div>
+
+<footer>
+Documento preparado para la implementación de Hermes Agent en Windows · Mallu Collection Store.<br>
+Comandos verificados sobre Hermes Agent (CLI <code>hermes kanban</code>, <code>hermes profile</code>). Los nombres de perfil y las descripciones son una propuesta: se pueden ajustar antes de crear las tarjetas.
+</footer>
+
+</div>
+<script>
+function cp(btn){
+  var code = btn.closest('.cmd').querySelector('code').innerText;
+  function done(){ btn.textContent = '✓ Copiado'; setTimeout(function(){ btn.textContent='Copiar'; }, 1500); }
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(code).then(done, fallback);
+  } else { fallback(); }
+  function fallback(){
+    var ta = document.createElement('textarea');
+    ta.value = code; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch(e){ btn.textContent='Selecciona y copia'; }
+    document.body.removeChild(ta);
+  }
+}
+</script>
+</body>
+</html>
